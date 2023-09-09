@@ -1,4 +1,4 @@
-public class Car {
+public abstract class Car {
     String brand;
     String color;
     int year;
@@ -11,6 +11,9 @@ public class Car {
         this.year = year;
         this.price = price;
         this.carID = carID;
+
     }
+
+    public abstract void showCarInformation();
 
 }
