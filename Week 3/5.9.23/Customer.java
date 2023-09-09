@@ -1,13 +1,13 @@
 public class Customer {
     String name;
-    int ID;
-    // Car[] cars ;
+    String ID;
+    Car[] cars;
     private float balance;
 
-    public Customer(String name, int ID, int numCar, float balance) {
+    public Customer(String name, String ID, int numCar, float balance) {
         this.name = name;
         this.ID = ID;
-        // cars = new Car[numCar];
+        cars = new Car[numCar];
         this.balance = balance;
     }
 
