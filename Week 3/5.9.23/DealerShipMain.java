@@ -128,4 +128,13 @@ public class DealerShipMain {
             System.out.println("Invalid Car Category!");
         }
     }
+
+    public static int getCustomerIndexByID(String ID, ArrayList<Customer> customers) {
+        for (int i = 0; i < customers.size(); i++) {
+            if (ID.equals(customers.get(i).getCustomerID())) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }
