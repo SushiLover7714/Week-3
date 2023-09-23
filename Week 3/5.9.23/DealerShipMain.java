@@ -82,5 +82,7 @@ public class DealerShipMain {
     }
 }
 
+// this is a comment
 
-//this is a comment
+// This is another comment
+// This is even another comment
