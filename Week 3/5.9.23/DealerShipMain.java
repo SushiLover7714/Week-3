@@ -56,9 +56,11 @@ public class DealerShipMain {
                 }
 
             } catch (Exception e) {
-                System.out.println("Input valid option");
-                break;
+                System.out.println("\nInput valid option\n");
+                input.nextLine();
+                continue;
             }
+            input.close();
 
         }
     }
