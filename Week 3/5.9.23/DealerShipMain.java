@@ -109,5 +109,21 @@ public class DealerShipMain {
             Car car = new Hatchback(brand, color, year, price, carID);
             cars.add(car);
         }
+        else if (carCategory.equalsIgnoreCase("sedan")) {
+            Car car = new Hatchback(brand, color, year, price, carID);
+            cars.add(car);
+        }
+        else if (carCategory.equalsIgnoreCase("sportcar")) {
+            Car car = new Hatchback(brand, color, year, price, carID);
+            cars.add(car);
+        }
+        else if (carCategory.equalsIgnoreCase("suv")) {
+            Car car = new Hatchback(brand, color, year, price, carID);
+            cars.add(car);
+        }
+        else
+        {
+            System.out.println("Invalid Car Category!");
+        }
     }
 }
