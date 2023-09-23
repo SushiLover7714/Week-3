@@ -8,49 +8,56 @@ public class DealerShipMain {
         ArrayList<Customer> customers = new ArrayList<Customer>();
         float balance = 100000.0f;
         ArrayList<Car> cars = new ArrayList<Car>();
+
         while (true) {
-            System.out.println("pos for car dealership: ");
-            System.out.println("-------------------------------");
-            System.out.println("1.Add customer: ");
-            System.out.println("2.Show Cars information: ");
-            System.out.println("3.Sell car");
-            System.out.println("4.Buy car: ");
-            System.out.println("5.Add car");
-            System.out.println("6.Exit");
-            System.out.println("-------------------------------");
-            System.out.print("Enter option: ");
-            int option = input.nextInt();
-            switch (option) {
-                case 1:
-                    boolean addCustomerSuccessfully = addCustomerInfo(input, customers);
-                    if (addCustomerSuccessfully == false) {
-                        continue;
-                    }
-                    System.out.println("Added customer successfully");
-                    break;
+            try {
+                System.out.println("pos for car dealership: ");
+                System.out.println("-------------------------------");
+                System.out.println("1.Add customer: ");
+                System.out.println("2.Show Cars information: ");
+                System.out.println("3.Sell car");
+                System.out.println("4.Buy car: ");
+                System.out.println("5.Add car");
+                System.out.println("6.Exit");
+                System.out.println("-------------------------------");
+                System.out.print("Enter option: ");
+                int option = input.nextInt();
+                switch (option) {
+                    case 1:
+                        boolean addCustomerSuccessfully = addCustomerInfo(input, customers);
+                        if (addCustomerSuccessfully == false) {
+                            continue;
+                        }
+                        System.out.println("Added customer successfully");
+                        break;
 
-                case 2:
-                    showCarInformation(cars);
-                    break;
+                    case 2:
+                        showCarInformation(cars);
+                        break;
 
-                case 3:
+                    case 3:
 
-                    break;
+                        break;
 
-                case 4:
+                    case 4:
 
-                    break;
+                        break;
 
-                case 5:
-                    addCar(input, cars);
-                    break;
+                    case 5:
+                        addCar(input, cars);
+                        break;
 
-                case 6:
-                    System.exit(0);
-                    break;
+                    case 6:
+                        System.exit(0);
+                        break;
 
-                default:
-                    break;
+                    default:
+                        break;
+                }
+
+            } catch (Exception e) {
+                System.out.println("Input valid option");
+                break;
             }
 
         }
@@ -103,26 +110,21 @@ public class DealerShipMain {
         year = input.nextInt();
         System.out.print("Enter price of car: ");
         price = input.nextInt();
-        System.out.print("Enter car ID");
+        System.out.print("Enter car ID: ");
         carID = input.nextInt();
         if (carCategory.equalsIgnoreCase("hatchback")) {
             Car car = new Hatchback(brand, color, year, price, carID);
             cars.add(car);
-        }
-        else if (carCategory.equalsIgnoreCase("sedan")) {
+        } else if (carCategory.equalsIgnoreCase("sedan")) {
             Car car = new Hatchback(brand, color, year, price, carID);
             cars.add(car);
-        }
-        else if (carCategory.equalsIgnoreCase("sportcar")) {
+        } else if (carCategory.equalsIgnoreCase("sportcar")) {
             Car car = new Hatchback(brand, color, year, price, carID);
             cars.add(car);
-        }
-        else if (carCategory.equalsIgnoreCase("suv")) {
+        } else if (carCategory.equalsIgnoreCase("suv")) {
             Car car = new Hatchback(brand, color, year, price, carID);
             cars.add(car);
-        }
-        else
-        {
+        } else {
             System.out.println("Invalid Car Category!");
         }
     }

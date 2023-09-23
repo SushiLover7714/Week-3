@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Customer {
     String name;
-    String ID;
+    private String ID;
     ArrayList<Car> cars = new ArrayList<Car>();
     private float balance;
 
@@ -24,5 +24,13 @@ public class Customer {
 
     public void addCar(Car car) {
         cars.add(car);
+    }
+
+    public void setCustomerID(String ID) {
+        this.ID = ID;
+    }
+
+    public String getCustomerID() {
+        return this.ID;
     }
 }
