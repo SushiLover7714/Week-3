@@ -2,8 +2,6 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import javax.swing.SwingConstants;
-
 public class DealerShipMain {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -32,7 +30,7 @@ public class DealerShipMain {
                     break;
 
                 case 2:
-
+                    showCarInformation(cars);
                     break;
 
                 case 3:
@@ -44,7 +42,7 @@ public class DealerShipMain {
                     break;
 
                 case 5:
-
+                    addCar(input, cars);
                     break;
 
                 case 6:
@@ -78,11 +76,38 @@ public class DealerShipMain {
             addCustomerSuccessfully = false;
         }
         return addCustomerSuccessfully;
+    }
 
+    public static void showCarInformation(ArrayList<Car> cars) {
+        for (int i = 0; i < cars.size(); i++) {
+            cars.get(i).showCarInformation();
+
+        }
+    }
+
+    public static void addCar(Scanner input, ArrayList<Car> cars) {
+        input.nextLine();
+        String carCategory;
+        String brand;
+        String color;
+        int year;
+        int price;
+        int carID;
+        System.out.print("Enter car category(Hatchback,Sedan,SportCar,SUV): ");
+        carCategory = input.nextLine();
+        System.out.print("Enter car brand: ");
+        brand = input.nextLine();
+        System.out.print("Enter color of car: ");
+        color = input.nextLine();
+        System.out.print("Enter the year the car was made: ");
+        year = input.nextInt();
+        System.out.print("Enter price of car: ");
+        price = input.nextInt();
+        System.out.print("Enter car ID");
+        carID = input.nextInt();
+        if (carCategory.equalsIgnoreCase("hatchback")) {
+            Car car = new Hatchback(brand, color, year, price, carID);
+            cars.add(car);
+        }
     }
 }
-
-// this is a comment
-
-// This is another comment
-// This is even another comment

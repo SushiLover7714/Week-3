@@ -7,6 +7,11 @@ public class Hatchback extends Car {
         this.discount = discount;
     }
 
+    public Hatchback(String brand, String color, int year, int price, int carID) {
+        super(brand, color, year, price, carID);
+        this.discount = 0;
+    }
+
     public void showCarInformation() {
         System.out.println("Car brand:                      " + super.brand);
         System.out.println("Car color:                        " + super.color);

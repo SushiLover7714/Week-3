@@ -5,6 +5,12 @@ public class SportCar extends Car {
     public SportCar(String brand, String color, int year, int price, int carID, int discount) {
         super(brand, color, year, price, carID);
         this.discount = discount;
+
+    }
+
+    public SportCar(String brand, String color, int year, int price, int carID) {
+        super(brand, color, year, price, carID);
+        this.discount = 0;
     }
 
     public void showCarInformation() {
