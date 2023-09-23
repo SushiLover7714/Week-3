@@ -14,11 +14,13 @@ public class SUV extends Car {
     }
 
     public void showCarInformation() {
-        System.out.println("Car brand:                      " + super.brand);
-        System.out.println("Car color:                        " + super.color);
-        System.out.println("Made in year:   " + super.year);
-        System.out.println("Car price:                   " + super.price + "$");
-        System.out.println("Car ID:                   " + this.carID);
-        System.out.println("Car discount:                   " + this.discount + "%");
+        System.out.println("Sedan");
+        System.out.printf("Car brand:         %s%n", super.brand);
+        System.out.printf("Car color:         %s%n", super.color);
+        System.out.printf("Made in year:      %s%n", super.year);
+        System.out.printf("Car price:         %s%n", super.price+"$");
+        System.out.printf("Car ID:            %s%n", this.carID);
+        System.out.printf("Car discount:      %s%n", this.discount+"$\n");
     }
+    
 }

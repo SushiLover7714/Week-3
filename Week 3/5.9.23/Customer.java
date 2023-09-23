@@ -33,4 +33,11 @@ public class Customer {
     public String getCustomerID() {
         return this.ID;
     }
+    public void showCustomerCarInformation()
+    {
+        for (int i=0;i<cars.size();i++)
+        {
+            cars.get(i).showCarInformation();
+        }
+    }
 }
