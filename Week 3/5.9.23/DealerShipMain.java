@@ -188,4 +188,25 @@ public class DealerShipMain {
     }
     return -1;
   }
+
+  public static void showCustomerInformation(Scanner input, ArrayList<Customer> customers) {
+    input.nextLine();
+    int option;
+    String customerID;
+    System.out.println("1. Show a customer infromation");
+    System.out.println("2. Show all customer information");
+    System.out.println("Enter option: ");
+    option = input.nextInt();
+    if (option == 1) {
+      System.out.print("Enter customer ID");
+      customerID = input.nextLine();
+      int index = getCustomerIndexByID(customerID, customers);
+      customers.get(index).showCustomerInformation();
+    } else if (option == 2) {
+      for (int i = 0; i < customers.size(); i++) {
+        customers.get(i).showCustomerInformation();
+      }
+    }
+
+  }
 }
