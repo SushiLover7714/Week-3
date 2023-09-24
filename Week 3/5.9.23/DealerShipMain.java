@@ -36,7 +36,7 @@ public class DealerShipMain {
             showCarInformation(cars, input, customers);
             break;
           case 3:
-
+            showCustomerInformation(input, customers);
             break;
           case 4:
             break;
@@ -198,6 +198,7 @@ public class DealerShipMain {
     System.out.println("Enter option: ");
     option = input.nextInt();
     if (option == 1) {
+      input.nextLine();
       System.out.print("Enter customer ID");
       customerID = input.nextLine();
       int index = getCustomerIndexByID(customerID, customers);
