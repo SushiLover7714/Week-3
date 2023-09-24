@@ -16,10 +16,11 @@ public class DealerShipMain {
         System.out.println("-------------------------------");
         System.out.println("1.Add customer: ");
         System.out.println("2.Show Cars information: ");
-        System.out.println("3.Sell car");
-        System.out.println("4.Buy car: ");
-        System.out.println("5.Add car");
-        System.out.println("6.Exit");
+        System.out.println("3.Show customer information: ");
+        System.out.println("4.Sell car");
+        System.out.println("5.Buy car: ");
+        System.out.println("6.Add car");
+        System.out.println("7.Exit");
         System.out.println("-------------------------------");
         System.out.print("Enter option: ");
         int option = input.nextInt();
@@ -35,13 +36,17 @@ public class DealerShipMain {
             showCarInformation(cars, input, customers);
             break;
           case 3:
+
             break;
           case 4:
             break;
           case 5:
-            addCar(input, cars, customers);
+
             break;
           case 6:
+            addCar(input, cars, customers);
+            break;
+          case 7:
             System.exit(0);
             break;
           default:
@@ -90,7 +95,10 @@ public class DealerShipMain {
       for (int i = 0; i < cars.size(); i++) {
         cars.get(i).showCarInformation();
       }
-    } else if (option == 2) {
+    } else if (option == 2)
+
+    {
+      input.nextLine();
       System.out.print("Enter Customer ID : ");
       String customerID = input.nextLine();
       int index = getCustomerIndexByID(customerID, customers);
@@ -125,8 +133,9 @@ public class DealerShipMain {
     input.nextLine();
     System.out.print("Enter car ID: ");
     carID = input.nextLine();
-    System.out.print("1.Add car to dealership");
-    System.out.print("2.Add car to customer");
+    System.out.println("1.Add car to dealership");
+    System.out.println("2.Add car to customer");
+    System.out.print("Enter option: ");
     option = input.nextInt();
     if (option == 1) {
       if (carCategory.equalsIgnoreCase("hatchback")) {
