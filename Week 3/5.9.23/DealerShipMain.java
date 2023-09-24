@@ -32,14 +32,14 @@ public class DealerShipMain {
             System.out.println("\nAdded customer successfully");
             break;
           case 2:
-            showCarInformation(cars,input,customers);
+            showCarInformation(cars, input, customers);
             break;
           case 3:
             break;
           case 4:
             break;
           case 5:
-            addCar(input, cars);
+            addCar(input, cars, customers);
             break;
           case 6:
             System.exit(0);
@@ -56,9 +56,8 @@ public class DealerShipMain {
   }
 
   public static boolean addCustomerInfo(
-    Scanner input,
-    ArrayList<Customer> customers
-  ) {
+      Scanner input,
+      ArrayList<Customer> customers) {
     boolean addCustomerSuccessfully;
     try {
       input.nextLine();
@@ -80,7 +79,7 @@ public class DealerShipMain {
     return addCustomerSuccessfully;
   }
 
-  public static void showCarInformation(ArrayList<Car> cars, Scanner input,ArrayList<Customer>customers) {
+  public static void showCarInformation(ArrayList<Car> cars, Scanner input, ArrayList<Customer> customers) {
     input.nextLine();
     System.out.println("1. Show cars in dealership");
     System.out.println("2. Show a customer's cars");
@@ -92,29 +91,27 @@ public class DealerShipMain {
         cars.get(i).showCarInformation();
       }
     } else if (option == 2) {
-        System.out.print("Enter Customer ID : ");
-        String customerID = input.nextLine();
-        int index = getCustomerIndexByID(customerID,customers);
-        if(index != -1)
-        {
-            System.out.println("------------Customer "+ customerID +"'s cars------------");
-            customers.get(index).showCustomerCarInformation();
-        }
-        else 
-        {
-            System.out.println("\nInvalid Customer ID");
-        }
+      System.out.print("Enter Customer ID : ");
+      String customerID = input.nextLine();
+      int index = getCustomerIndexByID(customerID, customers);
+      if (index != -1) {
+        System.out.println("------------Customer " + customerID + "'s cars------------");
+        customers.get(index).showCustomerCarInformation();
+      } else {
+        System.out.println("\nInvalid Customer ID");
+      }
     }
   }
 
-  public static void addCar(Scanner input, ArrayList<Car> cars) {
+  public static void addCar(Scanner input, ArrayList<Car> cars, ArrayList<Customer> customers) {
     input.nextLine();
     String carCategory;
     String brand;
     String color;
     int year;
     int price;
-    String carID="";
+    String carID = "";
+    int option;
     System.out.print("Enter car category(Hatchback,Sedan,SportCar,SUV): ");
     carCategory = input.nextLine();
     System.out.print("Enter car brand: ");
@@ -128,28 +125,53 @@ public class DealerShipMain {
     input.nextLine();
     System.out.print("Enter car ID: ");
     carID = input.nextLine();
-
-    if (carCategory.equalsIgnoreCase("hatchback")) {
-      Car car = new Hatchback(brand, color, year, price, carID);
-      cars.add(car);
-    } else if (carCategory.equalsIgnoreCase("sedan")) {
-      Car car = new Sedan(brand, color, year, price, carID);
-      cars.add(car);
-    } else if (carCategory.equalsIgnoreCase("sportcar")) {
-      Car car = new SportCar(brand, color, year, price, carID);
-      cars.add(car);
-    } else if (carCategory.equalsIgnoreCase("suv")) {
-      Car car = new SUV(brand, color, year, price, carID);
-      cars.add(car);
-    } else {
-      System.out.println("Invalid Car Category!");
+    System.out.print("1.Add car to dealership");
+    System.out.print("2.Add car to customer");
+    option = input.nextInt();
+    if (option == 1) {
+      if (carCategory.equalsIgnoreCase("hatchback")) {
+        Car car = new Hatchback(brand, color, year, price, carID);
+        cars.add(car);
+      } else if (carCategory.equalsIgnoreCase("sedan")) {
+        Car car = new Sedan(brand, color, year, price, carID);
+        cars.add(car);
+      } else if (carCategory.equalsIgnoreCase("sportcar")) {
+        Car car = new SportCar(brand, color, year, price, carID);
+        cars.add(car);
+      } else if (carCategory.equalsIgnoreCase("suv")) {
+        Car car = new SUV(brand, color, year, price, carID);
+        cars.add(car);
+      } else {
+        System.out.println("Invalid Car Category!");
+      }
+    } else if (option == 2) {
+      String customerID;
+      input.nextLine();
+      System.out.print("Enter customer ID");
+      customerID = input.nextLine();
+      int index = getCustomerIndexByID(customerID, customers);
+      if (carCategory.equalsIgnoreCase("hatchback")) {
+        Car car = new Hatchback(brand, color, year, price, carID);
+        customers.get(index).addCar(car);
+      } else if (carCategory.equalsIgnoreCase("sedan")) {
+        Car car = new Sedan(brand, color, year, price, carID);
+        customers.get(index).addCar(car);
+      } else if (carCategory.equalsIgnoreCase("sportcar")) {
+        Car car = new SportCar(brand, color, year, price, carID);
+        customers.get(index).addCar(car);
+      } else if (carCategory.equalsIgnoreCase("suv")) {
+        Car car = new SUV(brand, color, year, price, carID);
+        customers.get(index).addCar(car);
+      } else {
+        System.out.println("Invalid Car Category!");
+      }
     }
+
   }
 
   public static int getCustomerIndexByID(
-    String ID,
-    ArrayList<Customer> customers
-  ) {
+      String ID,
+      ArrayList<Customer> customers) {
     for (int i = 0; i < customers.size(); i++) {
       if (ID.equals(customers.get(i).getCustomerID())) {
         return i;
