@@ -210,4 +210,42 @@ public class DealerShipMain {
     }
 
   }
+
+  public static void sellCar(Scanner input, ArrayList<Car> cars, ArrayList<Customer> customers) {
+    input.nextLine();
+    int carPrice;
+    String customerID;
+    String carID;
+    int option;
+    int customerIndex;
+    System.out.print("Enter customer ID");
+    customerID = input.nextLine();
+    System.out.print("Enter car ID");
+    carID = input.nextLine();
+    input.nextLine();
+    System.out.println("1.Sell to external customer ");
+    System.out.println("2.Sell to existing customer ");
+    System.out.println("3.Sell to dealership ");
+    System.out.print("Enter option: ");
+    option = input.nextInt();
+    switch (option) {
+
+      case 1:
+        customerIndex = getCustomerIndexByID(customerID, customers);
+
+        customers.get(customerIndex).removeCar(carID);
+        carPrice = customers.get(customerIndex).getCar(carID).getPrice();
+        customers.get(customerIndex).updateBalance(1, carPrice);
+
+        break;
+
+      case 2:
+
+        break;
+
+      default:
+        break;
+
+    }
+  }
 }
