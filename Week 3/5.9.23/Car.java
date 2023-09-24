@@ -3,15 +3,14 @@ public abstract class Car {
     String color;
     int year;
     int price;
-    int carID;
+    String carID;
 
-    public Car(String brand, String color, int year, int price, int carID) {
+    public Car(String brand, String color, int year, int price, String carID) {
         this.brand = brand;
         this.color = color;
         this.year = year;
         this.price = price;
         this.carID = carID;
-
     }
 
     public abstract void showCarInformation();

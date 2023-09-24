@@ -97,7 +97,12 @@ public class DealerShipMain {
         int index = getCustomerIndexByID(customerID,customers);
         if(index != -1)
         {
+            System.out.println("------------Customer "+ customerID +"'s cars------------");
             customers.get(index).showCustomerCarInformation();
+        }
+        else 
+        {
+            System.out.println("\nInvalid Customer ID");
         }
     }
   }
@@ -109,7 +114,7 @@ public class DealerShipMain {
     String color;
     int year;
     int price;
-    int carID;
+    String carID="";
     System.out.print("Enter car category(Hatchback,Sedan,SportCar,SUV): ");
     carCategory = input.nextLine();
     System.out.print("Enter car brand: ");
@@ -120,8 +125,10 @@ public class DealerShipMain {
     year = input.nextInt();
     System.out.print("Enter price of car: ");
     price = input.nextInt();
+    input.nextLine();
     System.out.print("Enter car ID: ");
-    carID = input.nextInt();
+    carID = input.nextLine();
+
     if (carCategory.equalsIgnoreCase("hatchback")) {
       Car car = new Hatchback(brand, color, year, price, carID);
       cars.add(car);
