@@ -17,9 +17,9 @@ public class SportCar extends Car {
         System.out.printf("Car brand:         %s%n", super.brand);
         System.out.printf("Car color:         %s%n", super.color);
         System.out.printf("Made in year:      %s%n", super.year);
-        System.out.printf("Car price:         %s%n", super.price+"$");
+        System.out.printf("Car price:         %s%n", super.getPrice() + "$");
         System.out.printf("Car ID:            %s%n", super.carID);
-        System.out.printf("Car discount:      %s%n", this.discount+"$\n");
+        System.out.printf("Car discount:      %s%n", this.discount + "$\n");
     }
-    
+
 }

@@ -39,6 +39,7 @@ public class DealerShipMain {
             showCustomerInformation(input, customers);
             break;
           case 4:
+            sellCar(input, cars, customers);
             break;
           case 5:
 
