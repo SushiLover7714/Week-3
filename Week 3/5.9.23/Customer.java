@@ -44,6 +44,14 @@ public class Customer {
         return this.ID;
     }
 
+    public void setBalance(float amount) {
+        this.balance = amount;
+    }
+
+    public float getBalance() {
+        return this.balance;
+    }
+
     public void showCustomerCarInformation() {
         for (int i = 0; i < cars.size(); i++) {
             cars.get(i).showCarInformation();

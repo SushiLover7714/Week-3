@@ -61,9 +61,8 @@ public class DealerShipMain {
   }
 
   public static boolean addCustomerInfo(
-    Scanner input,
-    ArrayList<Customer> customers
-  ) {
+      Scanner input,
+      ArrayList<Customer> customers) {
     boolean addCustomerSuccessfully;
     try {
       input.nextLine();
@@ -86,10 +85,9 @@ public class DealerShipMain {
   }
 
   public static void showCarInformation(
-    ArrayList<Car> cars,
-    Scanner input,
-    ArrayList<Customer> customers
-  ) {
+      ArrayList<Car> cars,
+      Scanner input,
+      ArrayList<Customer> customers) {
     input.nextLine();
     System.out.println("1. Show cars in dealership");
     System.out.println("2. Show a customer's cars");
@@ -107,8 +105,7 @@ public class DealerShipMain {
       int index = getCustomerIndexByID(customerID, customers);
       if (index != -1) {
         System.out.println(
-          "------------Customer " + customerID + "'s cars------------"
-        );
+            "------------Customer " + customerID + "'s cars------------");
         customers.get(index).showCustomerCarInformation();
       } else {
         System.out.println("\nInvalid Customer ID");
@@ -117,10 +114,9 @@ public class DealerShipMain {
   }
 
   public static void addCar(
-    Scanner input,
-    ArrayList<Car> cars,
-    ArrayList<Customer> customers
-  ) {
+      Scanner input,
+      ArrayList<Car> cars,
+      ArrayList<Customer> customers) {
     input.nextLine();
     String carCategory;
     String brand;
@@ -187,9 +183,8 @@ public class DealerShipMain {
   }
 
   public static int getCustomerIndexByID(
-    String ID,
-    ArrayList<Customer> customers
-  ) {
+      String ID,
+      ArrayList<Customer> customers) {
     for (int i = 0; i < customers.size(); i++) {
       if (ID.equals(customers.get(i).getCustomerID())) {
         return i;
@@ -199,9 +194,8 @@ public class DealerShipMain {
   }
 
   public static void showCustomerInformation(
-    Scanner input,
-    ArrayList<Customer> customers
-  ) {
+      Scanner input,
+      ArrayList<Customer> customers) {
     input.nextLine();
     int option;
     String customerID;
@@ -223,16 +217,17 @@ public class DealerShipMain {
   }
 
   public static void sellCar(
-    Scanner input,
-    ArrayList<Car> cars,
-    ArrayList<Customer> customers
-  ) {
+      Scanner input,
+      ArrayList<Car> cars,
+      ArrayList<Customer> customers) {
     input.nextLine();
     int carPrice;
     String customerID;
     String carID;
     int option;
     int customerIndex;
+    String otherCustomerID;
+
     System.out.print("Enter customer ID");
     customerID = input.nextLine();
     System.out.print("Enter car ID");
@@ -244,16 +239,39 @@ public class DealerShipMain {
     option = input.nextInt();
     switch (option) {
       case 1:
-        //get customerIndex and car price first
+        // get customerIndex and car price first
         customerIndex = getCustomerIndexByID(customerID, customers);
         carPrice = customers.get(customerIndex).getCar(carID).getPrice();
-        //remove car later
+        // remove car later
         customers.get(customerIndex).removeCar(carID);
-        //update balance
+        // update balance
         customers.get(customerIndex).updateBalance(1, carPrice);
 
         break;
       case 2:
+        if (customers.size() < 2) {
+          System.out.println("There is only one customer");
+          break;
+        } else {
+          System.out.print("Enter customer ID of the buyer: ");
+          otherCustomerID = input.nextLine();
+          int otherCustomerIndex = getCustomerIndexByID(otherCustomerID, customers);
+          customerIndex = getCustomerIndexByID(customerID, customers);
+          if (customers.get(otherCustomerIndex).getBalance() >= customers.get(customerIndex).getCar(carID).getPrice()) {
+            carPrice = customers.get(customerIndex).getCar(carID).getPrice();
+            Car car = customers.get(customerIndex).getCar(carID);
+            customers.get(customerIndex).removeCar(carID);
+            customers.get(customerIndex).updateBalance(1, carPrice);
+
+            customers.get(otherCustomerIndex).addCar(car);
+            customers.get(otherCustomerIndex).updateBalance(2, carPrice);
+          }
+
+          else {
+            System.out.println("Customer " + otherCustomerID + " Does not have enough balance");
+
+          }
+        }
         break;
       default:
         break;
