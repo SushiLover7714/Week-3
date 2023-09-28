@@ -64,12 +64,9 @@ public class Customer {
     public void updateBalance(int addReduceFlag, float amount) {
         // addReduceFlag = 1 > add to balance
         // addReduceFlag 2 > remove from balance
-        System.out.print("Update balance" + amount);
         if (addReduceFlag == 1) {
-            System.out.print("Add balance" + amount);
             this.balance += amount;
         } else if (addReduceFlag == 2) {
-            System.out.print("Reduce balance" + amount);
             this.balance -= amount;
         }
 

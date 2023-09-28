@@ -42,7 +42,6 @@ public class DealerShipMain {
             sellCar(input, cars, customers);
             break;
           case 5:
-
             break;
           case 6:
             addCar(input, cars, customers);
@@ -62,8 +61,9 @@ public class DealerShipMain {
   }
 
   public static boolean addCustomerInfo(
-      Scanner input,
-      ArrayList<Customer> customers) {
+    Scanner input,
+    ArrayList<Customer> customers
+  ) {
     boolean addCustomerSuccessfully;
     try {
       input.nextLine();
@@ -85,7 +85,11 @@ public class DealerShipMain {
     return addCustomerSuccessfully;
   }
 
-  public static void showCarInformation(ArrayList<Car> cars, Scanner input, ArrayList<Customer> customers) {
+  public static void showCarInformation(
+    ArrayList<Car> cars,
+    Scanner input,
+    ArrayList<Customer> customers
+  ) {
     input.nextLine();
     System.out.println("1. Show cars in dealership");
     System.out.println("2. Show a customer's cars");
@@ -96,15 +100,15 @@ public class DealerShipMain {
       for (int i = 0; i < cars.size(); i++) {
         cars.get(i).showCarInformation();
       }
-    } else if (option == 2)
-
-    {
+    } else if (option == 2) {
       input.nextLine();
       System.out.print("Enter Customer ID : ");
       String customerID = input.nextLine();
       int index = getCustomerIndexByID(customerID, customers);
       if (index != -1) {
-        System.out.println("------------Customer " + customerID + "'s cars------------");
+        System.out.println(
+          "------------Customer " + customerID + "'s cars------------"
+        );
         customers.get(index).showCustomerCarInformation();
       } else {
         System.out.println("\nInvalid Customer ID");
@@ -112,7 +116,11 @@ public class DealerShipMain {
     }
   }
 
-  public static void addCar(Scanner input, ArrayList<Car> cars, ArrayList<Customer> customers) {
+  public static void addCar(
+    Scanner input,
+    ArrayList<Car> cars,
+    ArrayList<Customer> customers
+  ) {
     input.nextLine();
     String carCategory;
     String brand;
@@ -176,12 +184,12 @@ public class DealerShipMain {
         System.out.println("Invalid Car Category!");
       }
     }
-
   }
 
   public static int getCustomerIndexByID(
-      String ID,
-      ArrayList<Customer> customers) {
+    String ID,
+    ArrayList<Customer> customers
+  ) {
     for (int i = 0; i < customers.size(); i++) {
       if (ID.equals(customers.get(i).getCustomerID())) {
         return i;
@@ -190,7 +198,10 @@ public class DealerShipMain {
     return -1;
   }
 
-  public static void showCustomerInformation(Scanner input, ArrayList<Customer> customers) {
+  public static void showCustomerInformation(
+    Scanner input,
+    ArrayList<Customer> customers
+  ) {
     input.nextLine();
     int option;
     String customerID;
@@ -209,10 +220,13 @@ public class DealerShipMain {
         customers.get(i).showCustomerInformation();
       }
     }
-
   }
 
-  public static void sellCar(Scanner input, ArrayList<Car> cars, ArrayList<Customer> customers) {
+  public static void sellCar(
+    Scanner input,
+    ArrayList<Car> cars,
+    ArrayList<Customer> customers
+  ) {
     input.nextLine();
     int carPrice;
     String customerID;
@@ -223,30 +237,26 @@ public class DealerShipMain {
     customerID = input.nextLine();
     System.out.print("Enter car ID");
     carID = input.nextLine();
-    input.nextLine();
     System.out.println("1.Sell to external customer ");
     System.out.println("2.Sell to existing customer ");
     System.out.println("3.Sell to dealership ");
     System.out.print("Enter option: ");
     option = input.nextInt();
     switch (option) {
-
       case 1:
+        //get customerIndex and car price first
         customerIndex = getCustomerIndexByID(customerID, customers);
-
-        customers.get(customerIndex).removeCar(carID);
         carPrice = customers.get(customerIndex).getCar(carID).getPrice();
+        //remove car later
+        customers.get(customerIndex).removeCar(carID);
+        //update balance
         customers.get(customerIndex).updateBalance(1, carPrice);
 
         break;
-
       case 2:
-
         break;
-
       default:
         break;
-
     }
   }
 }
