@@ -18,7 +18,7 @@ public class Customer {
         System.out.println("Customer name:                      " + this.name);
         System.out.println("Customer ID:                        " + this.ID);
         System.out.println("Number of cars owned by customer:   " + cars.size());
-        System.out.println("Customer balance:                   " + this.balance + "$");
+        System.out.println("Customer balance:                   " + this.balance + "$\n");
 
     }
 

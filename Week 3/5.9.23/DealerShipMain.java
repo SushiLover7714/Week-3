@@ -161,7 +161,7 @@ public class DealerShipMain {
     } else if (option == 2) {
       String customerID;
       input.nextLine();
-      System.out.print("Enter customer ID");
+      System.out.print("Enter customer ID: ");
       customerID = input.nextLine();
       int index = getCustomerIndexByID(customerID, customers);
       if (carCategory.equalsIgnoreCase("hatchback")) {
@@ -205,7 +205,7 @@ public class DealerShipMain {
     option = input.nextInt();
     if (option == 1) {
       input.nextLine();
-      System.out.print("Enter customer ID");
+      System.out.print("Enter customer ID: ");
       customerID = input.nextLine();
       int index = getCustomerIndexByID(customerID, customers);
       customers.get(index).showCustomerInformation();
@@ -230,7 +230,7 @@ public class DealerShipMain {
 
     System.out.print("Enter customer ID");
     customerID = input.nextLine();
-    System.out.print("Enter car ID");
+    System.out.print("Enter car ID: ");
     carID = input.nextLine();
     System.out.println("1.Sell to external customer ");
     System.out.println("2.Sell to existing customer ");
@@ -253,6 +253,7 @@ public class DealerShipMain {
           System.out.println("There is only one customer");
           break;
         } else {
+          input.nextLine();
           System.out.print("Enter customer ID of the buyer: ");
           otherCustomerID = input.nextLine();
           int otherCustomerIndex = getCustomerIndexByID(otherCustomerID, customers);
