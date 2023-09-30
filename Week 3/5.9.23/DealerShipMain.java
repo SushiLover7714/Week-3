@@ -275,6 +275,8 @@ public class DealerShipMain {
         }
         break;
       case 3:
+        customerIndex = getCustomerIndexByID(customerID, customers);
+
         if (customers.get(customerIndex).getCar(carID).getPrice() <= balance) {
           carPrice = customers.get(customerIndex).getCar(carID).getPrice();
           Car car = customers.get(customerIndex).getCar(carID);
