@@ -3,11 +3,11 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class DealerShipMain {
+  static float balance = 100000.0f;
 
   public static void main(String[] args) {
     Scanner input = new Scanner(System.in);
     ArrayList<Customer> customers = new ArrayList<Customer>();
-    float balance = 100000.0f;
     ArrayList<Car> cars = new ArrayList<Car>();
 
     while (true) {
@@ -274,8 +274,17 @@ public class DealerShipMain {
           }
         }
         break;
-      default:
+      case 3:
+        if (customers.get(customerIndex).getCar(carID).getPrice() <= balance) {
+          carPrice = customers.get(customerIndex).getCar(carID).getPrice();
+          Car car = customers.get(customerIndex).getCar(carID);
+          customers.get(customerIndex).removeCar(carID);
+          customers.get(customerIndex).updateBalance(1, carPrice);
+          cars.add(car);
+          balance -= carPrice;
+        }
         break;
     }
   }
+
 }
