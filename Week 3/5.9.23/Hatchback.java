@@ -12,7 +12,6 @@ public class Hatchback extends Car {
     }
 
     public void showCarInformation() {
-        System.out.println("Sedan");
         System.out.printf("Car brand:         %s%n", super.brand);
         System.out.printf("Car color:         %s%n", super.color);
         System.out.printf("Made in year:      %s%n", super.year);
