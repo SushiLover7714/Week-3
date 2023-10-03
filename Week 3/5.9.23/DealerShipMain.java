@@ -1,3 +1,4 @@
+import java.nio.file.SecureDirectoryStream;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -93,11 +94,38 @@ public class DealerShipMain {
     System.out.println("2. Show a customer's cars");
     System.out.print("Enter Option : ");
     int option = input.nextInt();
+
     if (option == 1) {
-      System.out.println("------------Cars in dealership------------");
-      for (int i = 0; i < cars.size(); i++) {
-        cars.get(i).showCarInformation();
+
+      System.out.println("1. Show all cars in dealership");
+      System.out.println("2. filter cars by category");
+      System.out.println("3. Filter cars by price range");
+      System.out.println("Enter option: ");
+      option = input.nextInt();
+
+      if (option == 1) {
+        System.out.println("------------Cars in dealership------------");
+        for (int i = 0; i < cars.size(); i++) {
+          cars.get(i).showCarInformation();
+        }
       }
+
+      else if (option == 2) {
+        System.out.println("Enter category(Hatchback,Sedan,SportCar,SUV): ");
+        String carCategory = input.nextLine();
+        if (carCategory.equalsIgnoreCase("Hatchback")) {
+          for (int i = 0; i < cars.size(); i++) {
+            if (cars.get(i) instanceof Hatchback) {
+              cars.get(i).showCarInformation();
+            }
+          }
+        }
+      }
+
+      else if (option == 3) {
+
+      }
+
     } else if (option == 2) {
       input.nextLine();
       System.out.print("Enter Customer ID : ");
