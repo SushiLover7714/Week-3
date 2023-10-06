@@ -118,38 +118,46 @@ public class DealerShipMain {
           System.out.println("\n------------Cars in dealership------------");
           for (int i = 0; i < cars.size(); i++) {
             if (cars.get(i) instanceof Hatchback) {
+              cars.get(i).showCarInformation();//////
+            } else if (cars.get(i) instanceof SUV) {
+              cars.get(i).showCarInformation();
+            } else if (cars.get(i) instanceof Sedan) {
+              cars.get(i).showCarInformation();
+            } else if (cars.get(i) instanceof SportCar) {
               cars.get(i).showCarInformation();
             }
           }
         }
       }
+    }
 
-      else if (option == 3) {
-        input.nextLine();
-        System.out.print("Enter maximum price: ");
-        int maxPrice = input.nextInt();
-        System.out.print("Enter minimum price: ");
-        int minPrice = input.nextInt();
-        for (int i = 0; i < cars.size(); i++) {
-          if (cars.get(i).getPrice() < maxPrice && cars.get(i).getPrice() > minPrice) {
-            cars.get(i).showCarInformation();
-          }
-        }
-
-      } else if (option == 2) {
-        input.nextLine();
-        System.out.print("Enter Customer ID : ");
-        String customerID = input.nextLine();
-        int index = getCustomerIndexByID(customerID, customers);
-        if (index != -1) {
-          System.out.println(
-              "------------Customer " + customerID + "'s cars------------");
-          customers.get(index).showCustomerCarInformation();
-        } else {
-          System.out.println("\nInvalid Customer ID");
+    else if (option == 3) {
+      input.nextLine();
+      System.out.print("Enter maximum price: ");
+      int maxPrice = input.nextInt();
+      System.out.print("Enter minimum price: ");
+      int minPrice = input.nextInt();
+      for (int i = 0; i < cars.size(); i++) {
+        if (cars.get(i).getPrice() < maxPrice && cars.get(i).getPrice() > minPrice) {
+          cars.get(i).showCarInformation();
         }
       }
+
+    } else if (option == 2) {
+      input.nextLine();
+      System.out.print("Enter Customer ID : ");
+      String customerID = input.nextLine();
+      int index = getCustomerIndexByID(customerID, customers);
+      if (index != -1) {
+        System.out.println(
+            "------------Customer " + customerID + "'s cars------------");
+        customers.get(index).showCustomerCarInformation();
+      } else {
+        System.out.println("\nInvalid Customer ID");
+      }
     }
+  }
+
   }
 
   public static void addCar(
