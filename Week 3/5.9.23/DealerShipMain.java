@@ -122,28 +122,29 @@ public class DealerShipMain {
             }
           }
         }
-        if (carCategory.equalsIgnoreCase("Sedan"))
-          ;
-        System.out.println("\n------------Cars in dealership------------");
-        for (int i = 0; i < cars.size(); i++) {
-          if (cars.get(i) instanceof Sedan) {
-            cars.get(i).showCarInformation();
+        if (carCategory.equalsIgnoreCase("Sedan")) {
+          System.out.println("\n------------Cars in dealership------------");
+          for (int i = 0; i < cars.size(); i++) {
+            if (cars.get(i) instanceof Sedan) {
+              cars.get(i).showCarInformation();
+            }
           }
         }
-        if (carCategory.equalsIgnoreCase("SUV"))
-          ;
-        System.out.println("\n------------Cars in dealership------------");
-        for (int i = 0; i < cars.size(); i++) {
-          if (cars.get(i) instanceof SUV) {
-            cars.get(i).showCarInformation();
+        if (carCategory.equalsIgnoreCase("SUV")) {
+          System.out.println("\n------------Cars in dealership------------");
+          for (int i = 0; i < cars.size(); i++) {
+            if (cars.get(i) instanceof SUV) {
+              cars.get(i).showCarInformation();
+            }
           }
         }
-        if (carCategory.equalsIgnoreCase("SportCar"))
-          ;
-        System.out.println("\n------------Cars in dealership------------");
-        for (int i = 0; i < cars.size(); i++) {
-          if (cars.get(i) instanceof SportCar) {
-            cars.get(i).showCarInformation();
+
+        if (carCategory.equalsIgnoreCase("SportCar")) {
+          System.out.println("\n------------Cars in dealership------------");
+          for (int i = 0; i < cars.size(); i++) {
+            if (cars.get(i) instanceof SportCar) {
+              cars.get(i).showCarInformation();
+            }
           }
         }
       }
@@ -174,8 +175,6 @@ public class DealerShipMain {
         System.out.println("\nInvalid Customer ID");
       }
     }
-  }
-
   }
 
   public static void addCar(
