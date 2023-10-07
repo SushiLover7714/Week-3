@@ -158,7 +158,7 @@ public class DealerShipMain {
     }
   }
 
-  }
+  
 
   public static void addCar(
       Scanner input,
