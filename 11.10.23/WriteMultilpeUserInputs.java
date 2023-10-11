@@ -9,23 +9,34 @@ public class WriteMultilpeUserInputs {
         Scanner input = new Scanner(System.in);
         String userInput = "";
         ArrayList<String> userInputs = new ArrayList<String>();
-        String filePath = "C:\\Users\\msi\\Desktop\\Core Java\\Week 3\\11.10.23\\Example3.txt";
-        while (!(userInput.equals("q"))) {
-            System.out.print("Enter a string(Type Q to quit): ");
-            userInput = input.nextLine();
-            userInputs.add(userInput);
-        }
-
+        String filePath = ".\\Example3.txt";
+        
         try {
             FileWriter fileWriter = new FileWriter(filePath);
             BufferedWriter writer = new BufferedWriter(fileWriter);
-            for (int i = 0; i < userInputs.size(); i++) {
-                writer.write(userInputs.get(i));
+
+            while (true) {
+                System.out.print("Enter a string (Type 'q' to quit): ");
+                userInput = input.nextLine();
+                if ("q".equals(userInput)) {
+                    break; // Exit the loop if the user inputs 'q'
+                }
+                userInputs.add(userInput);
             }
+
+            for (String line : userInputs) {
+                writer.write(line);
+                writer.newLine(); // Add a newline after each string
+            }
+
+            System.out.println("User input has been written to the file.");
+
+            // Close the writer and the input scanner in a finally block
             writer.close();
-            input.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            input.close();
         }
     }
 }
